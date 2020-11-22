@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: identity-database-data
+  name: statistics-database-data
 spec:
   accessModes:
     - ReadWriteOnce

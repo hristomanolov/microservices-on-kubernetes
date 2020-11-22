@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: identity-database
+  name: dealers-database
 spec:
-  serviceName: identity-database
+  serviceName: dealers-database
   selector:
     matchLabels:
-      database: identity
+      database: dealers
   template:
     metadata:
       labels:
-        database: identity
+        database: dealers
         system: database
     spec:
       terminationGracePeriodSeconds: 30
       containers:
-        - name: identity-database
+        - name: dealers-database
           image: mcr.microsoft.com/mssql/server:2019-latest
           imagePullPolicy: IfNotPresent
           ports:
@@ -31,11 +31,11 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: environment-secrets
-                  key: identity-database-sa-password
+                  key: dealers-database-sa-password
           volumeMounts:
-            - name: identity-database-data
+            - name: dealers-database-data
               mountPath: /var/opt/mssql
       volumes:
-        - name: identity-database-data
+        - name: dealers-database-data
           persistentVolumeClaim:
-            claimName: identity-database-data
+            claimName: dealers-database-data
