@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: identity-service-data
+  name: event-bus-data
 spec:
   accessModes:
     - ReadWriteOnce
-    - ReadOnlyMany 
   resources:
     requests:
-      storage: 10Mi
+      storage: 1Gi
